@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+<style>
+    .hero img{
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+    }
+
+    .heading{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 17rem;
+    }
+
+    .content{
+        position: relative;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    
+</style>
+
+<div class="hero">
+    <img src="https://img.freepik.com/premium-vector/back-school-background_23-2149054437.jpg?w=2000">
+    <div class="heading">
+        <h2>Login As</h2>
+    </div>
+    <div class="content">
+        <a href="#" class="btn btn-primary mx-4">Student</a>
+        <a href="#" class="btn btn-danger mx-4">Teacher</a>
+    </div>
+</div>
+
+{% endblock %}
