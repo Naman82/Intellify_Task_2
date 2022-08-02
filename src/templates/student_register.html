@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block body %}
+
+<style>
+
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .div{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .card{
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+    .red-text{
+      color: red;
+    }
+
+</style>
+
+<div class="container">
+    <div class="card" style="width: 30rem;">
+        <div class="card-body">
+          <h5 class="card-title text-center mb-4">STUDENT REGISTER</h5>
+          {% if messages %}
+                {% for message in messages %}
+                   <p class="text-center red-text"> {{ message }} </p>
+                {% endfor %}
+          {% endif %}
+          <form action="{% url 'student' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+          <div class="div">
+              <div class="form-floating mb-3 mx-1" style="width: 50%;">
+                <input type="text" class="form-control" id="floatingInput1" placeholder="First Name" name="first_name">
+                <label for="floatingInput1">First Name</label>
+              </div>
+              <div class="form-floating mb-3 mx-1" style="width: 50%;">
+                <input type="text" class="form-control" id="floatingInput2" placeholder="Last Name" name="last_name">
+                <label for="floatingInput2">Last Name</label>
+              </div>
+          </div>
+
+          <div class="form-floating mb-3 mx-1">
+            <input type="text" class="form-control" id="floatingInput3" placeholder="Username" name="username">
+            <label for="floatingInput3">Admission No.</label>
+          </div>
+
+          <div class="form-floating mb-3 mx-1">
+            <input type="email" class="form-control" id="floatingInput4" placeholder="abc@gmail.com" name="email">
+            <label for="floatingInput4">Email</label>
+          </div>
+
+          <div class="form-floating mb-3 mx-1">
+            <input type="text" class="form-control" id="floatingInput5" placeholder="9XXXXXXXXX" name="rollno">
+            <label for="floatingInput5">Roll Number</label>
+          </div>
+
+          <div class="div">
+            <select class="form-select mx-1 mb-3"  aria-label="Default select example" name="standard">
+                <option selected>Standard</option>
+                <option value="Nursery">Nursery</option>
+                <option value="L.K.G">L.K.G</option>
+                <option value="U.K.G">U.K.G</option>
+                <option value="1st">1st</option>
+                <option value="2nd">2nd</option>
+                <option value="3rd">3rd</option>
+                <option value="4th">4th</option>
+                <option value="5th">5th</option>
+                <option value="6th">6th</option>
+                <option value="7th">7th</option>
+                <option value="8th">8th</option>
+                <option value="9th">9th</option>
+                <option value="10th">10th</option>
+                <option value="11th">11th</option>
+                <option value="12th">12th</option>
+              </select>
+              <select class="form-select mx-1 mb-3" aria-label="Default select example" name="section">
+                <option selected>Section</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+              <select class="form-select mx-1 mb-3" aria-label="Default select example" name="stream">
+                <option selected>Stream</option>
+                <option value="Primary">Primary(nursery-3rd)</option>
+                <option value="Secondary">Secondary(4th-12th)</option>
+                <option value="Medical">Medical</option>
+                <option value="Non-Medical">Non-Medical</option>
+                <option value="Commerce">Commerce</option>
+                <option value="Arts">Arts</option>
+              </select>
+        </div>
+
+
+          <h6 class="mb-2 mx-1">Profile Photo</h6>
+          <input class="mb-3 mx-1" type="file" accept="image/*" id="photoInput" onchange="loadFile(event)" name="photoInput">
+          <div class="div">
+              <img class="mb-3 " id="output"/ style="width: 22rem; height: 18rem;" hidden>
+          </div>
+
+
+          <div class="form-floating mb-4">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+            <label for="floatingPassword">Password</label>
+          </div>
+
+          <div class="form-floating mb-4">
+            <input type="password" class="form-control" id="floatingPassword1" placeholder="Password" name="password2">
+            <label for="floatingPassword1">Confirm Password</label>
+          </div>
+          <p  class="card-text text-center">Already a User? <a href="{% url 'student_login' %}" class="card-link">Login Here</a></p>
+          <div class="text-center mt-4 mb-2">
+              <button type="submit" class="btn btn-success ">Register</button>
+          </div>
+        </form>
+        </div>
+      </div>
+</div>
+
+
+<script>
+    var loadFile = function(event) {
+      var reader = new FileReader();
+      reader.onload = function(){
+        document.getElementById('output').hidden = false;
+        var output = document.getElementById('output');
+        output.src = reader.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    };
+  </script>
+
+
+{% endblock %}

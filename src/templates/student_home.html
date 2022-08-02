@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+<style>
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .card{
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+</style>
+
+    {% if users.is_student and users.is_authenticated %}
+    <div class=" container">
+    <div class="card mx-3" style="width: 20rem;">
+        <img src="{{students.profile_img.url}}" class="card-img-top mt-4" style="border-radius: 50%; width: 9rem; height: 9rem; border: 1px solid black; margin: auto;">
+        <hr>
+        <div class="card-body">
+          <h5 class="m-0 text-center">{{users.first_name}} {{users.last_name}}</h5>
+          <p class="mb-1 text-center"><small>{{users.username}}</small></p>
+          <p class="">Email : {{users.email}}</p>
+          <p class="">Stream : {{students.stream}}</p>
+          <p>Class : {{students.standard}} - {{students.class_section}}</p>
+          <p>Roll No. : {{students.roll_number}}</p>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+{% endblock %} 
