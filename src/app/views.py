@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import auth,User
 from django.contrib import messages
 from app.models import Student,Teacher
+from django.contrib.auth.decorators import login_required
 
 # To use existing "User" model with customization
 User = get_user_model()
@@ -156,6 +157,7 @@ def teacher_login(request):
     else:
         return render(request,'teacher_login.html')
 
+@login_required
 def student_home(request):
 
     # return users detail who is currently logged in 
@@ -165,6 +167,7 @@ def student_home(request):
     students=Student.objects.get(user=request.user)
     return render(request,'student_home.html',{'users':users, 'students':students})
 
+@login_required
 def teacher_home(request):
 
     # return users detail who is currently logged in 
