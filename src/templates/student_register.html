@@ -7,6 +7,7 @@
 
 {% block body %}
 
+<!-- style tag -->
 <style>
 
     .container{
@@ -30,17 +31,24 @@
     }
 
 </style>
+<!-- style tag end -->
 
+<!-- student register form start -->
 <div class="container">
     <div class="card" style="width: 30rem;">
         <div class="card-body">
           <h5 class="card-title text-center mb-4">STUDENT REGISTER</h5>
+          <!-- messages from backend -->
           {% if messages %}
                 {% for message in messages %}
                    <p class="text-center red-text"> {{ message }} </p>
                 {% endfor %}
           {% endif %}
+          <!-- messages end -->
+
+          <!-- form start  -->
           <form action="{% url 'student' %}" method="post" enctype="multipart/form-data">
+            <!-- csrf token  -->
             {% csrf_token %}
           <div class="div">
               <div class="form-floating mb-3 mx-1" style="width: 50%;">
@@ -108,9 +116,11 @@
 
           <h6 class="mb-2 mx-1">Profile Photo</h6>
           <input class="mb-3 mx-1" type="file" accept="image/*" id="photoInput" onchange="loadFile(event)" name="photoInput">
+          <!-- display of img upon selection -->
           <div class="div">
-              <img class="mb-3 " id="output"/ style="width: 22rem; height: 18rem;" hidden>
+              <img class="mb-3 " id="output" style="width: 22rem; height: 18rem;" hidden>
           </div>
+          <!-- end of display  -->
 
 
           <div class="form-floating mb-4">
@@ -122,16 +132,21 @@
             <input type="password" class="form-control" id="floatingPassword1" placeholder="Password" name="password2">
             <label for="floatingPassword1">Confirm Password</label>
           </div>
+          <!-- direct connectivity with login page -->
           <p  class="card-text text-center">Already a User? <a href="{% url 'student_login' %}" class="card-link">Login Here</a></p>
           <div class="text-center mt-4 mb-2">
               <button type="submit" class="btn btn-success ">Register</button>
           </div>
         </form>
+        <!-- form end -->
         </div>
       </div>
 </div>
+<!-- student register form end -->
 
+<!-- function for viewing uploaded photo furing submission -->
 
+<!-- script tag start -->
 <script>
     var loadFile = function(event) {
       var reader = new FileReader();
@@ -143,6 +158,6 @@
       reader.readAsDataURL(event.target.files[0]);
     };
   </script>
-
+<!-- script tag end -->
 
 {% endblock %}

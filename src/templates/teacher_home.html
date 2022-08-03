@@ -6,6 +6,7 @@
 
 {% block body %}
 
+<!-- style tag -->
 <style>
     .container{
         display: flex;
@@ -18,7 +19,9 @@
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
 </style>
+<!-- style tag end -->
 
+<!-- profile card begin -->
     {% if users.is_teacher and users.is_authenticated %}
     <div class=" container">
     <div class="card mx-3" style="width: 20rem;">
@@ -35,5 +38,6 @@
       </div>
     </div>
     {% endif %}
+<!-- profile card end -->
 
 {% endblock %} 

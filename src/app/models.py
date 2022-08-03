@@ -3,10 +3,13 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
+# User model is customized to different users
 class User(AbstractUser):
     is_student = models.BooleanField(default=False)
     is_teacher = models.BooleanField(default=False)
 
+
+# Student model is created to store student details
 class Student(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     profile_img = models.ImageField(upload_to = 'student/profile')
@@ -16,6 +19,7 @@ class Student(models.Model):
     stream = models.CharField(max_length=50,blank=True)
     roll_number = models.IntegerField()
 
+# Teacher model is created to store teacher details
 class Teacher(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     profile_img = models.ImageField(upload_to = 'teacher/profile')

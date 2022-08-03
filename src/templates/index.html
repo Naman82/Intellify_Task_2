@@ -6,6 +6,7 @@
 
 {% block body %}
 
+<!-- style tag -->
 <style>
     .hero img{
         background-position: center;
@@ -21,7 +22,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        top: 17rem;
+        top: 18rem;
     }
 
     .content{
@@ -35,7 +36,9 @@
 
     
 </style>
+<!-- style tag end -->
 
+<!-- hero section -->
 <div class="hero">
     <img src="https://img.freepik.com/premium-vector/back-school-background_23-2149054437.jpg?w=2000">
     <div class="heading">
@@ -46,5 +49,5 @@
         <a href="{% url 'teacher' %}" class="btn btn-danger mx-4">Teacher</a>
     </div>
 </div>
-
+<!-- hero section end -->
 {% endblock %}
